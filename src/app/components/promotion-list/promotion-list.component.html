@@ -1,0 +1,16 @@
+<div class="grid my-5">
+  <div class="col-12 text-2xl text-primary">Paketat ne promocion</div>
+  <div class="col-3" *ngFor="let item of packages">
+    <p-card [style]="{'height':'700px'}" [header]=item.name [subheader]=item.promotionalOfferPrice styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <img alt="Card" [style]="{'height':'200px'}" [src]="item.imageUrl | safeHtml">
+      </ng-template>
+      <p [style]="{'height':'200px'}">{{item.description}}</p>
+      <ng-template pTemplate="footer">
+        <p-button label="Save" icon="pi pi-check"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
