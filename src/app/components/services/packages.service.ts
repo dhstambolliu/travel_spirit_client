@@ -15,4 +15,8 @@ export class PackagesService {
   getPackages(): Observable<Packages[]> {
     return this.http.get<Packages[]>(`${this.apiServerUrl}/packages/carousel`)
   }
+
+  getPromotionalOffers(): Observable<Packages[]> {
+    return this.http.get<Packages[]>(`${this.apiServerUrl}/packages/promotional-offers`)
+  }
 }

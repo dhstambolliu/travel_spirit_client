@@ -10,8 +10,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import {CarouselModule} from "primeng/carousel";
 import {ButtonModule} from "primeng/button";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {SafeHtml} from "./pipes/SafeHtml";
+import {CardModule} from "primeng/card";
+import { PromotionListComponent } from './components/promotion-list/promotion-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {SafeHtml} from "./pipes/SafeHtml";
     FooterComponent,
     HomeComponent,
     CarouselComponent,
-    SafeHtml
+    SafeHtml,
+    PromotionListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import {SafeHtml} from "./pipes/SafeHtml";
     CarouselModule,
     ButtonModule,
     HttpClientModule,
+    CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

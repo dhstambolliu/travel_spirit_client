@@ -12,20 +12,20 @@ export class AppHeaderComponent implements OnInit {
     this.items = [
       {
         label: 'Home',
-        items: [{
-          label: 'New',
-          icon: 'pi pi-fw pi-plus',
-          items: [
-            {label: 'Project'},
-            {label: 'Other'},
-          ]
-        },
-          {label: 'Open'},
-          {label: 'Quit'}
-        ]
+        // items: [{
+        //   label: 'New',
+        //   icon: 'pi pi-fw pi-plus',
+        //   items: [
+        //     {label: 'Project'},
+        //     {label: 'Other'},
+        //   ]
+        // },
+        //   {label: 'Open'},
+        //   {label: 'Quit'}
+        // ]
       },
       {
-        label: 'Edit',
+        label: 'Destinations',
         // icon: 'pi pi-fw pi-pencil',
         // items: [
         //   {label: 'Delete', icon: 'pi pi-fw pi-trash'},
