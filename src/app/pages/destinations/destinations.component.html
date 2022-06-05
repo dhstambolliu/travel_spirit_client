@@ -1,14 +1,16 @@
 <div class="grid my-5" style="max-width: 100%">
-  <div class="col-12 text-2xl text-primary">Të gjithë destinacionet</div>
+  <div class="col-12 text-2xl text-primary center"><h1 [style]="{'color': 'black'}">Të gjithë destinacionet</h1></div>
   <div class="col-3" *ngFor="let item of packages">
-    <p-card [style]="{'height':'700px'}" [header]=item.name [subheader]=item.promotionalOfferPrice styleClass="p-card-shadow">
+    <p-card [style]="{'height':'600px'}" [header]=item.name [subheader]=item.promotionalOfferPrice
+            styleClass="p-card-shadow">
       <ng-template pTemplate="header">
         <img alt="Card" [style]="{'height':'200px'}" [src]="item.imageUrl | safeHtml">
       </ng-template>
       <p [style]="{'height':'200px'}">{{item.description}}</p>
       <ng-template pTemplate="footer">
-        <p-button label="Save" icon="pi pi-check"></p-button>
-        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+        <div class="center">
+          <p-button label="Go to booking" icon="pi pi-book" routerLink="/booking"></p-button>
+        </div>
       </ng-template>
     </p-card>
   </div>

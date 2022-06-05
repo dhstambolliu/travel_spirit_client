@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Packages} from "../carousel/carousel.component";
 import {HttpErrorResponse} from "@angular/common/http";
 import {PackagesService} from "../services/packages.service";
@@ -10,7 +10,9 @@ import {PackagesService} from "../services/packages.service";
 })
 export class PromotionListComponent implements OnInit {
   packages: Packages[] | any;
-  constructor(private packagesService: PackagesService) { }
+
+  constructor(private packagesService: PackagesService) {
+  }
 
   ngOnInit(): void {
     this.getPromotionalOffers();

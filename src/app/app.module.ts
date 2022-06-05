@@ -20,6 +20,13 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookingComponent } from './pages/booking/booking.component';
 import { SearchComponent } from './pages/search/search.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatIconModule} from "@angular/material/icon";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -44,7 +51,14 @@ import { SearchComponent } from './pages/search/search.component';
     ButtonModule,
     HttpClientModule,
     CardModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
