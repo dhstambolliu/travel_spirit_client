@@ -1,5 +1,5 @@
 <div class="grid my-5" style="max-width: 100%">
-  <div class="col-12 text-2xl text-primary">Paketat në promocion</div>
+  <div class="col-12 text-2xl text-primary">Të gjithë destinacionet</div>
   <div class="col-3" *ngFor="let item of packages">
     <p-card [style]="{'height':'700px'}" [header]=item.name [subheader]=item.promotionalOfferPrice styleClass="p-card-shadow">
       <ng-template pTemplate="header">
@@ -13,4 +13,3 @@
     </p-card>
   </div>
 </div>
-

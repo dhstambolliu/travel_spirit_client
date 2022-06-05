@@ -19,4 +19,8 @@ export class PackagesService {
   getPromotionalOffers(): Observable<Packages[]> {
     return this.http.get<Packages[]>(`${this.apiServerUrl}/packages/promotional-offers`)
   }
+
+  getDestinations(): Observable<Packages[]> {
+    return this.http.get<Packages[]>(`${this.apiServerUrl}/packages/destinations`)
+  }
 }

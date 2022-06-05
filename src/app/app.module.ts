@@ -14,6 +14,10 @@ import {HttpClientModule} from "@angular/common/http";
 import {SafeHtml} from "./pipes/SafeHtml";
 import {CardModule} from "primeng/card";
 import { PromotionListComponent } from './components/promotion-list/promotion-list.component';
+import { DestinationsComponent } from './pages/destinations/destinations.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { PromotionListComponent } from './components/promotion-list/promotion-li
     HomeComponent,
     CarouselComponent,
     SafeHtml,
-    PromotionListComponent
+    PromotionListComponent,
+    DestinationsComponent,
+    NotFoundComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +40,7 @@ import { PromotionListComponent } from './components/promotion-list/promotion-li
     ButtonModule,
     HttpClientModule,
     CardModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

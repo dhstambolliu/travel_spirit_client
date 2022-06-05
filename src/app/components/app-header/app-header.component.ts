@@ -12,6 +12,8 @@ export class AppHeaderComponent implements OnInit {
     this.items = [
       {
         label: 'Home',
+        icon: 'pi pi-fw pi-home',
+        routerLink: 'home',
         // items: [{
         //   label: 'New',
         //   icon: 'pi pi-fw pi-plus',
@@ -26,11 +28,17 @@ export class AppHeaderComponent implements OnInit {
       },
       {
         label: 'Destinations',
-        // icon: 'pi pi-fw pi-pencil',
+        icon: 'pi pi-fw pi-car',
+        routerLink: 'destinations'
         // items: [
         //   {label: 'Delete', icon: 'pi pi-fw pi-trash'},
         //   {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
         // ]
+      },
+      {
+        label: 'About Us',
+        icon: 'pi pi-fw pi-question-circle',
+        routerLink: 'about_us'
       }
     ]
   }
