@@ -18,6 +18,8 @@ import { DestinationsComponent } from './pages/destinations/destinations.compone
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BookingComponent } from './pages/booking/booking.component';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PromotionListComponent,
     DestinationsComponent,
     NotFoundComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    BookingComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

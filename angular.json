@@ -113,5 +113,7 @@
       }
     }
   },
-  "defaultProject": "travel_spirit_client"
+  "cli": {
+    "analytics": false
+  }
 }
