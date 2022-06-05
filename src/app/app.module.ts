@@ -23,10 +23,12 @@ import { SearchComponent } from './pages/search/search.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatIconModule} from "@angular/material/icon";
 import {MatNativeDateModule} from "@angular/material/core";
+import {InputTextModule} from 'primeng/inputtext';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     NotFoundComponent,
     AboutUsComponent,
     BookingComponent,
-    SearchComponent
+    SearchComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,9 @@ import {MatNativeDateModule} from "@angular/material/core";
     ReactiveFormsModule,
     MatDatepickerModule,
     MatIconModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    InputTextModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Packages} from "../../components/carousel/carousel.component";
 import {HttpErrorResponse} from "@angular/common/http";
 import {PackagesService} from "../../components/services/packages.service";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-destinations',
@@ -11,14 +13,19 @@ import {PackagesService} from "../../components/services/packages.service";
 export class DestinationsComponent implements OnInit {
   packages: any;
 
-  constructor(private packagesService: PackagesService) { }
+  constructor(private packagesService: PackagesService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.getDestinations();
+    console.info("Actual query: ", this.route.snapshot.paramMap.get("query"))
+    this.getDestinations(this.route.snapshot.paramMap.get("query")!);
+
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event) => {
+        this.getDestinations(this.route.snapshot.paramMap.get("query")!);
+    })
   }
 
-  public getDestinations(): void {
-    this.packagesService.getDestinations().subscribe(
+  public getDestinations(query?:string): void {
+    this.packagesService.getDestinations(query).subscribe(
       (response: Packages[]) => {
         this.packages = response;
         console.log(this.packages);

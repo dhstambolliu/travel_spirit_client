@@ -9,8 +9,8 @@
           <img [style]="{'height':'300px', 'width': '400px'}" [src]="package.imageUrl | safeHtml" [alt]="package.name" class="product-image" />
         </div>
         <div>
-          <h4 class="mb-1">{{package.name}}</h4>
-          <h6 class="mt-0 mb-3">${{package.price}}</h6>
+          <h1 class="mb-1">{{package.name}}</h1>
+          <h3 class="mt-0 mb-3">${{package.price}}</h3>
           <p [style]="{'height':'200px'}" [class]="'product-badge status-'+package.description.toLowerCase()">{{package.description}}</p>
           <div class="car-buttons mt-5">
             <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-book" routerLink="/booking" label="Go to booking"></p-button>

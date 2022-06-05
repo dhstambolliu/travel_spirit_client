@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import {Packages} from "../carousel/carousel.component";
+import {SearchService} from "../services/search.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -8,43 +11,38 @@ import {MenuItem} from 'primeng/api';
 })
 export class AppHeaderComponent implements OnInit {
   items: MenuItem[];
-  constructor() {
+  packages: Packages[] | undefined;
+  query?: string
+
+  constructor(private searchService: SearchService, private _router: Router) {
     this.items = [
       {
         label: 'Home',
         icon: 'pi pi-fw pi-home',
         routerLink: 'home',
-        // items: [{
-        //   label: 'New',
-        //   icon: 'pi pi-fw pi-plus',
-        //   items: [
-        //     {label: 'Project'},
-        //     {label: 'Other'},
-        //   ]
-        // },
-        //   {label: 'Open'},
-        //   {label: 'Quit'}
-        // ]
       },
       {
         label: 'Destinations',
         icon: 'pi pi-fw pi-car',
         routerLink: 'destinations'
-        // items: [
-        //   {label: 'Delete', icon: 'pi pi-fw pi-trash'},
-        //   {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
-        // ]
       },
       {
         label: 'About Us',
         icon: 'pi pi-fw pi-question-circle',
         routerLink: 'about_us'
+      },
+      {
+        label: 'Contact Us',
+        icon: 'pi pi-fw pi-id-card',
+        routerLink: 'contact_us'
       }
     ]
   }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
   }
 
+  search () {
+    this._router.navigate(['destinations', {query: this.query }]);
+  }
 }

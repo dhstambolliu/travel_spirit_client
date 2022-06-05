@@ -1,11 +1,11 @@
 <div class="grid my-5" style="max-width: 100%">
   <div class="col-12 text-2xl text-primary center"><h1 [style]="{'color': 'black'}">Paketat në promocion</h1></div>
   <div class="col-3" *ngFor="let item of packages">
-    <p-card [style]="{'height':'600px'}" [header]=item.name [subheader]=item.promotionalOfferPrice
-            styleClass="p-card-shadow">
+    <p-card [style]="{'height':'650px'}" [header]=item.name [subheader]=item.promotionalOfferPrice styleClass="p-card-shadow">
       <ng-template pTemplate="header">
         <img alt="Card" [style]="{'height':'200px'}" [src]="item.imageUrl | safeHtml">
       </ng-template>
+      <p style="text-decoration: line-through">{{item.price}}</p>
       <p [style]="{'height':'200px'}">{{item.description}}</p>
 
       <ng-template pTemplate="footer">

@@ -20,7 +20,7 @@ export class PackagesService {
     return this.http.get<Packages[]>(`${this.apiServerUrl}/packages/promotional-offers`)
   }
 
-  getDestinations(): Observable<Packages[]> {
-    return this.http.get<Packages[]>(`${this.apiServerUrl}/packages/destinations`)
+  getDestinations(query?: string): Observable<Packages[]> {
+    return this.http.post<Packages[]>(`${this.apiServerUrl}/packages/destinations`, {query: query})
   }
 }
