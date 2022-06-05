@@ -13,6 +13,7 @@ export class BookingComponent implements OnInit {
   adults = new FormControl('', [Validators.required]);
   children = new FormControl('', [Validators.required]);
   date = new FormControl('', [Validators.required]);
+  contactNumber = new FormControl('', [Validators.required]);
   hide = true;
   colorControl = new FormControl('primary');
   fontSizeControl = new FormControl(16, Validators.min(10));
@@ -48,6 +49,14 @@ export class BookingComponent implements OnInit {
     }
 
     return this.surname.hasError('surname') ? 'Not a valid surname' : '';
+  }
+
+  getContactNumberErrorMessage() {
+    if (this.contactNumber.hasError('required')) {
+      return 'You must enter your Contact Number';
+    }
+
+    return this.contactNumber.hasError('contactNumber') ? 'Not a valid contact number' : '';
   }
 
   getAdultsErrorMessage() {

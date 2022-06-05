@@ -21,6 +21,13 @@
         <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field>
 
+      <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+        <mat-label>Enter Contact Number</mat-label>
+        <input matInput #input maxlength="10" [formControl]="contactNumber" required placeholder="Ex. Nougat">
+        <mat-hint align="end">{{input.value?.length || 0}}/15</mat-hint>
+        <mat-error *ngIf="contactNumber.invalid">{{getContactNumberErrorMessage()}}</mat-error>
+      </mat-form-field>
+
       <mat-form-field appearance="fill" floatLabel="always">
         <mat-label>Amount</mat-label>
         <input matInput class="example-right-align" placeholder="0">
