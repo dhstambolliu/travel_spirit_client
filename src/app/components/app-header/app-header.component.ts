@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {Packages} from "../carousel/carousel.component";
-import {SearchService} from "../services/search.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,7 +13,7 @@ export class AppHeaderComponent implements OnInit {
   packages: Packages[] | undefined;
   query?: string
 
-  constructor(private searchService: SearchService, private _router: Router) {
+  constructor(private _router: Router) {
     this.items = [
       {
         label: 'Home',
@@ -42,7 +41,7 @@ export class AppHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  search () {
-    this._router.navigate(['destinations', {query: this.query }]);
+  search() {
+    this._router.navigate(['destinations', {query: this.query}]);
   }
 }

@@ -1,19 +1,23 @@
-<p-carousel [value]="packages" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+<p-carousel [value]="packages" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true"
+            [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
   <ng-template pTemplate="header">
-    <h1 [ngStyle]="{'text-align': 'center'}">Most Featured Offers</h1>
+    <h1 [ngStyle]="{'text-align': 'center'}">Paketat më të reja</h1>
   </ng-template>
   <ng-template let-package pTemplate="item">
     <div class="product-item">
       <div class="product-item-content">
         <div class="mb-3">
-          <img [style]="{'height':'300px', 'width': '400px'}" [src]="package.imageUrl | safeHtml" [alt]="package.name" class="product-image" />
+          <img [style]="{'height':'300px', 'width': '400px'}" [src]="package.imageUrl | safeHtml" [alt]="package.name"
+               class="product-image"/>
         </div>
         <div>
-          <h1 class="mb-1">{{package.name}}</h1>
-          <h3 class="mt-0 mb-3">${{package.price}}</h3>
-          <p [style]="{'height':'200px'}" [class]="'product-badge status-'+package.description.toLowerCase()">{{package.description}}</p>
+          <h1 class="mb-1">{{package.duration}} ditë në {{package.name}}</h1>
+          <h3 class="mt-0 mb-3" style="font-size: 20px; color: green">{{package.price}} Lekë</h3>
+          <p [style]="{'height':'200px'}"
+             [class]="'product-badge status-'+package.description.toLowerCase()">{{package.description}}</p>
           <div class="car-buttons mt-5">
-            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-book" routerLink="/booking" label="Go to booking"></p-button>
+            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-book"
+                      routerLink="/booking/{{package.id}}" label="Rezervo"></p-button>
           </div>
         </div>
       </div>

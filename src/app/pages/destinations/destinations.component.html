@@ -1,15 +1,17 @@
 <div class="grid my-5" style="max-width: 100%">
-  <div class="col-12 text-2xl text-primary center"><h1 [style]="{'color': 'black'}">Të gjithë destinacionet</h1></div>
-  <div class="col-3" *ngFor="let item of packages">
-    <p-card [style]="{'height':'650px'}" [header]=item.name [subheader]=item.promotionalOfferPrice
+  <div class="col-12 text-2xl text-primary center"><h1
+    [style]="{'color': 'black','font-size':'30px', 'margin-bottom':'50px'}"><b>Të gjithë destinacionet</b></h1></div>
+  <div class="col-3" *ngFor="let package of packages">
+    <p-card [style]="{'height':'600px', 'margin-left': '20px', 'text-align' : 'center'}" [header]=package.name
             styleClass="p-card-shadow">
+      <p style="font-size: 20px"><b>{{package.duration}}</b> ditë për vetëm <b style="color:green">{{package.price}} Lekë</b></p>
       <ng-template pTemplate="header">
-        <img alt="Card" [style]="{'height':'200px'}" [src]="item.imageUrl | safeHtml">
+        <img alt="Card" [style]="{'height':'200px'}" [src]="package.imageUrl | safeHtml">
       </ng-template>
-      <p [style]="{'height':'200px'}">{{item.description}}</p>
+      <p [style]="{'height':'200px'}">{{package.description}}</p>
       <ng-template pTemplate="footer">
         <div class="center">
-          <p-button label="Go to booking" icon="pi pi-book" routerLink="/booking"></p-button>
+          <p-button label="Rezervo" routerLink="/booking/{{package.id}}" icon="pi pi-book"></p-button>
         </div>
       </ng-template>
     </p-card>

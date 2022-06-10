@@ -1,5 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {PackagesService} from "../../components/services/packages.service";
+import {ActivatedRoute} from "@angular/router";
+
+export interface Package {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  duration: number;
+  promotionalOffer: boolean;
+  promotionalOfferPrice: number;
+  featured: boolean;
+  imageUrl: any;
+  active: boolean;
+  cityId: number;
+}
 
 @Component({
   selector: 'app-booking',
@@ -10,8 +26,7 @@ export class BookingComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   name = new FormControl('', [Validators.required]);
   surname = new FormControl('', [Validators.required]);
-  adults = new FormControl('', [Validators.required]);
-  children = new FormControl('', [Validators.required]);
+  people = new FormControl('', [Validators.required]);
   date = new FormControl('', [Validators.required]);
   contactNumber = new FormControl('', [Validators.required]);
   hide = true;
@@ -21,10 +36,13 @@ export class BookingComponent implements OnInit {
     color: this.colorControl,
     fontSize: this.fontSizeControl,
   });
+  package: Package | any;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private packagesService: PackagesService, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    this.getPackage();
   }
 
   getEmailErrorMessage() {
@@ -60,19 +78,11 @@ export class BookingComponent implements OnInit {
   }
 
   getAdultsErrorMessage() {
-    if (this.adults.hasError('required')) {
+    if (this.people.hasError('required')) {
       return 'You must select a number';
     }
 
-    return this.adults.hasError('adults') ? 'Not a valid selection' : '';
-  }
-
-  getChildrenErrorMessage() {
-    if (this.children.hasError('required')) {
-      return 'You must select a number';
-    }
-
-    return this.children.hasError('children') ? 'Not a valid selection' : '';
+    return this.people.hasError('adults') ? 'Not a valid selection' : '';
   }
 
   getDateErrorMessage() {
@@ -85,6 +95,12 @@ export class BookingComponent implements OnInit {
 
   getFontSize() {
     return Math.max(10, this.fontSizeControl.value || 0);
+  }
+
+  getPackage(): void {
+    // @ts-ignore
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.packagesService.getPackage(id).subscribe(packages => this.package = packages);
   }
 
 }

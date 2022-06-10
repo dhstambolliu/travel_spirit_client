@@ -22,13 +22,11 @@
 /* Control the left side */
 .left {
   left: 0;
-  margin-top: 30px;
 }
 
 /* Control the right side */
 .right {
   right: 0;
-  margin-top: 20px;
 }
 
 /* If you want the content centered horizontally and vertically */
@@ -49,7 +47,10 @@
 mat-form-field, button{
   width: 100%;
   margin-right: 300px;
-  margin-bottom: 10px;
+}
+
+h2 {
+  margin-left: 230px;
 }
 
 .page {
@@ -57,8 +58,13 @@ mat-form-field, button{
   height: 3%;
 }
 
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
 mat-form-field {
-  padding: 6px;
+  height: 35px;
+  margin-bottom: 25px;
 }
 
 

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PackagesService} from "../services/packages.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import { DomSanitizer } from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 
 export interface Packages {
   id: number;
@@ -14,6 +14,7 @@ export interface Packages {
   featured: boolean;
   imageUrl: any;
   active: boolean;
+  cityId: number;
 }
 
 @Component({

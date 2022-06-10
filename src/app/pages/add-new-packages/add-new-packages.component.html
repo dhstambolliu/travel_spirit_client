@@ -1,0 +1,118 @@
+<div class="page">
+  <form [formGroup]="options" [style.fontSize.px]="getFontSize()">
+    <div class="split left">
+      <div class="centered">
+        <mat-form-field>
+          <mat-label>Enter Name</mat-label>
+          <input matInput #name [formControl]="nameControl" required placeholder="Ex. Nougat">
+          <mat-error *ngIf="package_name">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br><br>
+
+        <mat-form-field>
+          <mat-label>Enter Country</mat-label>
+          <input matInput #country [formControl]="countryControl" required placeholder="Ex. New York">
+          <mat-error *ngIf="country">{{getCountryErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br><br>
+
+        <mat-form-field>
+          <mat-label>Enter Continent</mat-label>
+          <input matInput #continent [formControl]="continentControl" required placeholder="Ex. Europe">
+          <mat-error *ngIf="continent">{{getContinentErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br><br>
+
+        <button pButton type="button"
+                (click)="addCity(package_name.value,  country.value, continent.value); package_name.value=''; country.value=''; continent.value=''"
+                label="Insert New City"></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<form [formGroup]="options" [style.fontSize.px]="getFontSize()">
+  <div class="split right">
+    <div class="centered">
+      <mat-form-field>
+        <mat-label>Enter Package Name</mat-label>
+        <input matInput #package_name [formControl]="packageNameControl" required placeholder="Ex. Nougat">
+        <mat-error *ngIf="package_name">{{getPackageNameErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter Package Description</mat-label>
+        <textarea matInput #description [formControl]="packageDescriptionControl"
+                  placeholder="Ex: Describe a short story for the package" required></textarea>
+        <mat-error *ngIf="description">{{getPackageDescriptionErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter Image Url</mat-label>
+        <textarea matInput #image_url [formControl]="imageUrlControl" required
+                  placeholder="Ex: https://www.google.com"></textarea>
+        <mat-error *ngIf="image_url">{{getImageUrlErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter package duration</mat-label>
+        <input matInput #duration [formControl]="packageDuration" required placeholder="Ex: 4" required>
+        <mat-error *ngIf="duration">{{getPackageDurationErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter package price</mat-label>
+        <input matInput #price [formControl]="packagePrice" required placeholder="Ex: 700.20" required>
+        <mat-error *ngIf="price">{{getPackagePriceErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Is Package Featured?</mat-label>
+        <mat-select required #featured [formControl]="packageFeatured">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+          <mat-error *ngIf="featured">{{getFeaturedErrorMessage()}}</mat-error>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Is Promotional Offer?</mat-label>
+        <mat-select required #promotional_offer [formControl]="packagePromotional">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+          <mat-error *ngIf="promotional_offer">{{getPromotionalErrorMessage()}}</mat-error>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Enter Promotional Offer Price</mat-label>
+        <input matInput #promotional_offer_price [formControl]="packagePromotionalOfferPrice" placeholder="Ex: 700.20"
+               required>
+        <mat-error *ngIf="promotional_offer_price">{{getPromotionalOfferPriceErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Select City</mat-label>
+        <mat-select required #city_id [formControl]="selectCity">
+          <mat-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</mat-option>
+          <mat-error *ngIf="city_id">{{getCityErrorMessage()}}</mat-error>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Is Package Active?</mat-label>
+        <mat-select required #active [formControl]="packageActive">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+          <mat-error *ngIf="active">{{getActiveErrorMessage()}}</mat-error>
+        </mat-select>
+      </mat-form-field>
+
+      <button pButton type="button"
+              (click)="addPackage(package_name.value,  description.value, image_url.value, duration.value, price.value, featured.value, promotional_offer.value, promotional_offer_price.value, city_id.value, active.value);
+               package_name.value=''; description.value=''; image_url.value=''; duration.value=''; price.value=''; featured.value=''; promotional_offer.value=''; promotional_offer_price.value=''; city_id.value=''; active.value='';"
+              label="Insert New Package"></button>
+    </div>
+  </div>
+</form>
