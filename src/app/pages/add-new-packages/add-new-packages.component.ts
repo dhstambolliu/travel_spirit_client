@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AddNewPackagesService, City} from "../../components/services/add-new-packages.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {City} from "../../models/models";
+import {AddNewPackagesService} from "../../components/services/add-new-packages.service";
 
 @Component({
   selector: 'app-add-new-packages',
@@ -50,7 +51,7 @@ export class AddNewPackagesComponent implements OnInit {
     this.addNewPackagesService.addCity(this.cityForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
-          alert("City was added!");
+          alert(this.cityForm.value.name + " was added successfully!");
           this.clearCityForm();
         } else {
           alert(response.messages.join(", "))
@@ -65,7 +66,7 @@ export class AddNewPackagesComponent implements OnInit {
     this.addNewPackagesService.addPackage(this.packageForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
-          alert("Package was added!");
+          alert("Package " + this.packageForm.value.name + " was added successfully!");
           this.clearForm();
         } else {
           alert(response.messages.join(", "))

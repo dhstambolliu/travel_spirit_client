@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Packages} from "../carousel/carousel.component";
 import {HttpErrorResponse} from "@angular/common/http";
 import {PackagesService} from "../services/packages.service";
+import {Packages} from "../../models/models";
 
 @Component({
   selector: 'app-promotion-list',

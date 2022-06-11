@@ -17,20 +17,14 @@ export class ContactUsComponent implements OnInit {
   contactForm = new FormGroup({
     fullName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
-    message: new FormControl('', [Validators.required])
+    subject: new FormControl('', [Validators.required])
   })
 
   ngOnInit(): void {
   }
 
-
-  public checkError = (controlName: string, errorName: string) => {
-    // @ts-ignore
-    return this.packageForm.controls[controlName].hasError(errorName);
-  }
-
   registerForm(): void {
-    this.contactService.addContact(this.contactForm.value as Contact)
+    this.contactService.addContact(this.model as Contact)
       .subscribe((response: any) => {
         if (response.success) {
           alert("Message sent!");
@@ -45,14 +39,10 @@ export class ContactUsComponent implements OnInit {
   }
 
   public clearContactForm() {
-    let tmpValue = {
-      fullName: null,
-      email: null,
-      subject: null,
-    };
+    let tmpValue = this.model;
     this.contactForm.setValue(tmpValue as any);
     this.contactForm.clearAsyncValidators();
-    this.contactForm.reset()
+    this.contactForm.reset();
   }
 
 }

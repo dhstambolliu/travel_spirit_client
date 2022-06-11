@@ -2,27 +2,8 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {City, Package} from "../../models/models";
 
-export interface City {
-  id: number;
-  name: string;
-  country: string;
-  continent: string;
-}
-
-export interface Package {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  duration: number;
-  promotionalOffer: boolean;
-  promotionalOfferPrice: number;
-  featured: boolean;
-  imageUrl: any;
-  active: boolean;
-  cityId: number;
-}
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng/api';
-import {Packages} from "../carousel/carousel.component";
 import {Router} from "@angular/router";
+import {Packages} from "../../models/models";
 
 @Component({
   selector: 'app-header',
@@ -28,12 +28,12 @@ export class AppHeaderComponent implements OnInit {
       {
         label: 'About Us',
         icon: 'pi pi-fw pi-question-circle',
-        routerLink: 'about_us'
+        routerLink: 'about-us'
       },
       {
         label: 'Contact Us',
         icon: 'pi pi-fw pi-id-card',
-        routerLink: 'contact_us'
+        routerLink: 'contact-us'
       }
     ]
   }

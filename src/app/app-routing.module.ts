@@ -12,10 +12,10 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'destinations', component: DestinationsComponent},
-  {path: 'contact_us', component: ContactUsComponent},
-  {path: 'about_us', component: AboutUsComponent},
+  {path: 'contact-us', component: ContactUsComponent},
+  {path: 'about-us', component: AboutUsComponent},
   {path: 'booking/:id', component: BookingComponent},
-  {path: 'add_new_packages', component: AddNewPackagesComponent},
+  {path: 'add-new-packages', component: AddNewPackagesComponent},
   {path: '**', redirectTo: '/404'},
   {path: '404', component: NotFoundComponent},
 ];

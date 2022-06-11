@@ -2,20 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PackagesService} from "../services/packages.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {DomSanitizer} from '@angular/platform-browser';
-
-export interface Packages {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  duration: number;
-  promotionalOffer: boolean;
-  promotionalOfferPrice: number;
-  featured: boolean;
-  imageUrl: any;
-  active: boolean;
-  cityId: number;
-}
+import {Packages} from "../../models/models";
 
 @Component({
   selector: 'app-carousel',

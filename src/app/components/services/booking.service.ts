@@ -1,16 +1,8 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-
-export interface Booking {
-  reservationDate?: number;
-  people?: string;
-  name?: string;
-  surname?: string;
-  email?: string;
-  contact?: string;
-  packageId?: string;
-}
+import {Observable} from "rxjs";
+import {Booking} from "../../models/models";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +18,7 @@ export class BookingService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  addBooking(booking: Booking) {
-    return this.http.post<Booking>(`${this.apiServerUrl}/reservation/add`, booking, this.httpOptions);
+  addBooking(booking: Booking): Observable<Booking> {
+    return this.http.post<Booking>(`${this.apiServerUrl}/booking/add`, booking, this.httpOptions);
   }
 }
