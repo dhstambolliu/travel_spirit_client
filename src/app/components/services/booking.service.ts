@@ -27,6 +27,6 @@ export class BookingService {
   };
 
   addBooking(booking: Booking) {
-    return this.http.post<Booking>(`${this.apiServerUrl}/booking/add`, booking, this.httpOptions);
+    return this.http.post<Booking>(`${this.apiServerUrl}/reservation/add`, booking, this.httpOptions);
   }
 }

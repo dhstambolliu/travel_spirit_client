@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Contact} from "../../models/models";
-import {AddNewPackagesService} from "../../components/services/add-new-packages.service";
 import {ContactService} from "../../components/services/contact.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-contact-us',
@@ -12,7 +11,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class ContactUsComponent implements OnInit {
   model: Contact = new Contact();
 
-  constructor(public contactService: ContactService) {
+  constructor(private _formBuilder: FormBuilder, public contactService: ContactService) {
   }
 
   contactForm = new FormGroup({
@@ -24,8 +23,36 @@ export class ContactUsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registerForm(): void {
 
-
+  public checkError = (controlName: string, errorName: string) => {
+    // @ts-ignore
+    return this.packageForm.controls[controlName].hasError(errorName);
   }
+
+  registerForm(): void {
+    this.contactService.addContact(this.contactForm.value as Contact)
+      .subscribe((response: any) => {
+        if (response.success) {
+          alert("Message sent!");
+          this.clearContactForm();
+        } else {
+          alert(response.messages.join(", "))
+        }
+      }, error => {
+        console.error(error);
+        alert(error.message)
+      });
+  }
+
+  public clearContactForm() {
+    let tmpValue = {
+      fullName: null,
+      email: null,
+      subject: null,
+    };
+    this.contactForm.setValue(tmpValue as any);
+    this.contactForm.clearAsyncValidators();
+    this.contactForm.reset()
+  }
+
 }

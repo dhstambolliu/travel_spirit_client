@@ -59,7 +59,7 @@ export class BookingComponent implements OnInit {
     this.bookingService.addBooking(this.bookingForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
-          alert("Package was added!");
+          alert("Package is booked successfully!");
           this.clearForm();
         } else {
           alert(response.messages.join(", "))
