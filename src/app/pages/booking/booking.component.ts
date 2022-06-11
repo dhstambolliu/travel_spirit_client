@@ -4,17 +4,17 @@ import {PackagesService} from "../../components/services/packages.service";
 import {ActivatedRoute} from "@angular/router";
 
 export interface Package {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  duration: number;
-  promotionalOffer: boolean;
-  promotionalOfferPrice: number;
-  featured: boolean;
-  imageUrl: any;
-  active: boolean;
-  cityId: number;
+  id?: number;
+  name?: string;
+  price?: number;
+  description?: string;
+  duration?: number;
+  promotionalOffer?: boolean;
+  promotionalOfferPrice?: number;
+  featured?: boolean;
+  imageUrl?: any;
+  active?: boolean;
+  cityId?: number;
 }
 
 @Component({
