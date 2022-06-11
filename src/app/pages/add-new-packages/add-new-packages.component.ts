@@ -33,7 +33,7 @@ export class AddNewPackagesComponent implements OnInit {
   city: City[] = [];
   cities: City[] | any;
 
-  constructor(private _formBuilder: FormBuilder, public addNewPackage: AddNewPackagesService) {
+  constructor(private _formBuilder: FormBuilder, public addNewPackagesService: AddNewPackagesService) {
   }
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class AddNewPackagesComponent implements OnInit {
 
   addCity(): void {
 
-    this.addNewPackage.addCity(this.cityForm.value as any)
+    this.addNewPackagesService.addCity(this.cityForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
           alert("City was added!");
@@ -62,7 +62,7 @@ export class AddNewPackagesComponent implements OnInit {
   }
 
   addPackage(): void {
-    this.addNewPackage.addPackage(this.packageForm.value as any)
+    this.addNewPackagesService.addPackage(this.packageForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
           alert("Package was added!");
@@ -106,7 +106,7 @@ export class AddNewPackagesComponent implements OnInit {
   }
 
   public getCities(): void {
-    this.addNewPackage.getCities().subscribe(
+    this.addNewPackagesService.getCities().subscribe(
       (response: City[]) => {
         this.cities = response;
         console.log(this.cities);

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PackagesService} from "../../components/services/packages.service";
 import {ActivatedRoute} from "@angular/router";
+import {BookingService} from "../../components/services/booking.service";
 
 export interface Package {
   id?: number;
@@ -23,84 +24,65 @@ export interface Package {
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  name = new FormControl('', [Validators.required]);
-  surname = new FormControl('', [Validators.required]);
-  people = new FormControl('', [Validators.required]);
-  date = new FormControl('', [Validators.required]);
-  contactNumber = new FormControl('', [Validators.required]);
-  hide = true;
-  colorControl = new FormControl('primary');
-  fontSizeControl = new FormControl(16, Validators.min(10));
-  options = this._formBuilder.group({
-    color: this.colorControl,
-    fontSize: this.fontSizeControl,
-  });
+  bookingForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    surname: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    people: new FormControl('', [Validators.required]),
+    reservationDate: new FormControl('', [Validators.required]),
+    contact: new FormControl('', [Validators.required]),
+    packageId: new FormControl('', [Validators.required])
+  })
+
   package: Package | any;
 
-  constructor(private _formBuilder: FormBuilder, private packagesService: PackagesService, private route: ActivatedRoute) {
+  constructor(private _formBuilder: FormBuilder, private packagesService: PackagesService,
+              private route: ActivatedRoute, public bookingService: BookingService) {
   }
 
   ngOnInit(): void {
     this.getPackage();
   }
 
-  getEmailErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter your email';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  getNameErrorMessage() {
-    if (this.name.hasError('required')) {
-      return 'You must enter your Name';
-    }
-
-    return this.name.hasError('name') ? 'Not a valid name' : '';
-  }
-
-  getSurnameErrorMessage() {
-    if (this.surname.hasError('required')) {
-      return 'You must enter your Surname';
-    }
-
-    return this.surname.hasError('surname') ? 'Not a valid surname' : '';
-  }
-
-  getContactNumberErrorMessage() {
-    if (this.contactNumber.hasError('required')) {
-      return 'You must enter your Contact Number';
-    }
-
-    return this.contactNumber.hasError('contactNumber') ? 'Not a valid contact number' : '';
-  }
-
-  getAdultsErrorMessage() {
-    if (this.people.hasError('required')) {
-      return 'You must select a number';
-    }
-
-    return this.people.hasError('adults') ? 'Not a valid selection' : '';
-  }
-
-  getDateErrorMessage() {
-    if (this.date.hasError('required')) {
-      return 'You must select a date';
-    }
-
-    return this.date.hasError('date') ? 'Not a valid selection' : '';
-  }
-
-  getFontSize() {
-    return Math.max(10, this.fontSizeControl.value || 0);
-  }
-
   getPackage(): void {
     // @ts-ignore
     const id = +this.route.snapshot.paramMap.get('id');
     this.packagesService.getPackage(id).subscribe(packages => this.package = packages);
+  }
+
+  public checkError = (controlName: string, errorName: string) => {
+    // @ts-ignore
+    return this.bookingForm.controls[controlName].hasError(errorName);
+  }
+
+  addBooking(): void {
+    this.bookingService.addBooking(this.bookingForm.value as any)
+      .subscribe((response: any) => {
+        if (response.success) {
+          alert("Package was added!");
+          this.clearForm();
+        } else {
+          alert(response.messages.join(", "))
+        }
+      }, error => {
+        console.error(error);
+        alert(error.message)
+      });
+  }
+
+  public clearForm() {
+    let tmpValue = {
+      name: null,
+      surname: null,
+      email: null,
+      contact: null,
+      people: null,
+      reservationDate: null,
+      packageId: null,
+    };
+    this.bookingForm.setValue(tmpValue as any);
+    this.bookingForm.clearAsyncValidators();
+    this.bookingForm.reset()
   }
 
 }
