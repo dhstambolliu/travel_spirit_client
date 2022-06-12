@@ -1,32 +1,33 @@
 <div class="container grid">
   <div class="col-12 md:col-6">
-    <label for="fullName" class="block text-900 font-medium mb-2">Name</label>
-    <input id="fullName" type="text" pInputText required [(ngModel)]="model.fullName" class="w-full mb-3">
 
-    <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-    <input id="email1" type="email" pInputText class="w-full mb-3" required [(ngModel)]="model.email"/>
+      <label for="fullName" class="block text-900 font-medium mb-2">Name</label>
+      <input id="fullName" type="text" pInputText required [(ngModel)]="model.fullName" class="w-full mb-3">
 
-    <label for="Message" class="block text-900 font-medium mb-2">Message</label>
-    <textarea id="Message" pInputTextarea class="w-full mb-3" required [(ngModel)]="model.subject"></textarea>
-
-    <button pButton type="button" (click)="registerForm()"
-            label="Submit"></button>
+      <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+      <input id="email1" type="email" pInputText class="w-full mb-3" required [(ngModel)]="model.email"/>
+<div>
+      <label for="Message" class="block text-900 font-medium mb-2">Message</label>
+      <textarea id="Message" pInputTextarea class="w-full mb-3" required [(ngModel)]="model.subject"></textarea>
   </div>
+      <button pButton type="button" (click)="registerForm()"
+              label="Submit"></button>
+    </div>
 
-  <div class="col-12 md:col-6">
-    <div class="mapouter">
-      <div class="gmap_canvas">
-        <iframe width="100%" height="500" id="gmap_canvas"
-                src="https://maps.google.com/maps?q=papa%20gjon%20pali&t=k&z=13&ie=UTF8&iwloc=&output=embed"
-                [frameBorder]="0"
-                [scrolling]="0" [marginHeight]="0" [marginWidth]="0"></iframe>
-        <style>
-          .gmap_canvas {
-            overflow: hidden;
-            background: none !important;
-          }
-        </style>
-      </div>
+<div class="col-12 md:col-6">
+  <div class="mapouter">
+    <div class="gmap_canvas">
+      <iframe width="100%" height="400" id="gmap_canvas"
+              src="https://maps.google.com/maps?q=papa%20gjon%20pali&t=k&z=13&ie=UTF8&iwloc=&output=embed"
+              [frameBorder]="0"
+              [scrolling]="0" [marginHeight]="0" [marginWidth]="0"></iframe>
+      <style>
+        .gmap_canvas {
+          overflow: hidden;
+          background: none !important;
+        }
+      </style>
     </div>
   </div>
+</div>
 </div>
