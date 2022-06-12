@@ -60,14 +60,15 @@
     <div class="col-12 text-center">
       <p-progressSpinner *ngIf="loader"></p-progressSpinner>
     </div>
-    <div *ngFor="let pack of package">
+    <div class="text-4xl text-center w-full pb-4">Selected Package</div>
+    <div class="text-4xl text-center w-full pb-4" *ngFor="let pack of package">
       <p-card [header]=pack.name
               styleClass="p-card-shadow">
         <h2><b>{{pack.duration}}</b> ditë për vetëm <b style="color:green">{{pack.price}} Lekë</b></h2>
         <ng-template pTemplate="header">
           <img alt="Card" [style]="{'height':'282px'}" [src]="pack.imageUrl | safeHtml">
         </ng-template>
-        <p [style]="{'height':'200px'}">{{pack.description}}</p>
+        <p [style]="{'height':'116px'}">{{pack.description}}</p>
       </p-card>
     </div>
   </div>

@@ -11,6 +11,7 @@ import {MessageService} from "primeng/api";
 })
 export class ContactUsComponent implements OnInit {
   model: Contact = new Contact();
+  loader: boolean = false;
 
   constructor(private _formBuilder: FormBuilder, public contactService: ContactService, private messageService: MessageService) {
   }
@@ -33,14 +34,17 @@ export class ContactUsComponent implements OnInit {
     this.contactService.addContact(this.model as Contact)
       .subscribe((response: any) => {
         if (response.success) {
+          this.loader = true;
           this.messageService.add({severity:'success', summary:'Sending form was success', detail:"Message is sent successfully. You will be contacted very soon!"});
           this.clearContactForm();
         } else {
           this.messageService.add({severity:'warning', summary:'Contact form errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
+          this.loader = false;
         }
       }, error => {
         console.error(error);
         this.messageService.add({severity:'warning', summary:'Contact form errors', detail: error && error.message ? error.message : "Unknown error"});
+        this.loader = false;
       });
   }
 

@@ -26,13 +26,13 @@
       <button pButton type="button"
               (click)="addCity()"
               label="Insert New City"
-              [disabled]="cityForm.invalid"
+              [disabled]="cityForm.invalid || loader"
       >
       </button>
     </form>
   </div>
   <div class="col-12 md:col-6 py-2">
-    <form [formGroup]="packageForm" class="flex flex-column w-full">
+    <form [formGroup]="packageForm" class="flex flex-column w-full pb-2">
       <mat-form-field>
         <mat-label>Enter Package Name</mat-label>
         <input matInput formControlName="name" required placeholder="Insert Name">
@@ -111,7 +111,7 @@
       <button pButton type="button"
               (click)="addPackage()"
               label="Insert New Package"
-              [disabled]="packageForm.invalid"
+              [disabled]="packageForm.invalid || loader"
       >
       </button>
     </form>

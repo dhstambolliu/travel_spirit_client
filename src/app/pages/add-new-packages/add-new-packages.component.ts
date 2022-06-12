@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {City} from "../../models/models";
 import {AddNewPackagesService} from "../../components/services/add-new-packages.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-add-new-packages',
@@ -33,8 +34,9 @@ export class AddNewPackagesComponent implements OnInit {
   hide = true;
   city: City[] = [];
   cities: City[] | any;
+  loader:boolean = false;
 
-  constructor(private _formBuilder: FormBuilder, public addNewPackagesService: AddNewPackagesService) {
+  constructor(private _formBuilder: FormBuilder, public addNewPackagesService: AddNewPackagesService, private messageService: MessageService) {
   }
 
   ngOnInit(): void {
@@ -51,14 +53,17 @@ export class AddNewPackagesComponent implements OnInit {
     this.addNewPackagesService.addCity(this.cityForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
-          alert(this.cityForm.value.name + " was added successfully!");
+          this.loader = true;
+          this.messageService.add({severity:'success', summary:'Action was success', detail:"City is created successfully."});
           this.clearCityForm();
         } else {
-          alert(response.messages.join(", "))
+          this.messageService.add({severity:'warn', summary:'Adding City errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
+          this.loader = false;
         }
       }, error => {
         console.error(error);
-        alert(error.message)
+        this.messageService.add({severity:'error', summary:'Booking City errors', detail: error && error.message ? error.message : "Unknown error"});
+        this.loader = false;
       });
   }
 
@@ -66,14 +71,17 @@ export class AddNewPackagesComponent implements OnInit {
     this.addNewPackagesService.addPackage(this.packageForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
-          alert("Package " + this.packageForm.value.name + " was added successfully!");
+          this.loader = true;
+          this.messageService.add({severity:'success', summary:'Action was success', detail:"Package is added successfully!"});
           this.clearForm();
         } else {
-          alert(response.messages.join(", "))
+          this.messageService.add({severity:'warn', summary:'Adding package errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
+          this.loader = false;
         }
       }, error => {
         console.error(error);
-        alert(error.message)
+        this.messageService.add({severity:'error', summary:'Adding package errors', detail: error && error.message ? error.message : "Unknown error"});
+        this.loader = false;
       });
   }
 

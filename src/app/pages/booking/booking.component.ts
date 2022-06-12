@@ -55,12 +55,12 @@ export class BookingComponent implements OnInit {
           this.messageService.add({severity:'success', summary:'Booking was success', detail:"Package " + this.bookingForm.value.name + " is booked successfully. You will be contacted very soon!"});
           this.clearForm();
         } else {
-          this.messageService.add({severity:'warning', summary:'Booking errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
+          this.messageService.add({severity:'warn', summary:'Booking errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
         }
         this.loader = false;
       }, error => {
         console.error(error);
-        this.messageService.add({severity:'warning', summary:'Booking errors', detail: error && error.message ? error.message : "Unknown error"});
+        this.messageService.add({severity:'error', summary:'Booking errors', detail: error && error.message ? error.message : "Unknown error"});
         this.loader = false;
       });
   }
