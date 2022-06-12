@@ -49,10 +49,7 @@ export class ContactUsComponent implements OnInit {
   }
 
   public clearContactForm() {
-    let tmpValue = this.model;
-    this.contactForm.setValue(tmpValue as any);
-    this.contactForm.clearAsyncValidators();
-    this.contactForm.reset();
+    this.model = new Contact();
   }
 
 }
