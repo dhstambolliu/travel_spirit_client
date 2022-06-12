@@ -1,43 +1,37 @@
-<div class="page">
-  <form [formGroup]="cityForm">
-    <div class="split left">
-      <div class="centered">
-        <mat-form-field>
-          <mat-label>Enter Name</mat-label>
-          <input matInput formControlName="name" required placeholder="Insert Name">
-          <mat-error *ngIf="checkError('name', 'required')">Field is required</mat-error>
-        </mat-form-field>
-        <br><br>
+<div class="grid fluid container">
+  <div class="col-12 md:col-6">
+    <form [formGroup]="cityForm" class="flex flex-column w-full">
+      <mat-form-field>
+        <mat-label>Enter Name</mat-label>
+        <input matInput formControlName="name" required placeholder="Insert Name">
+        <mat-error *ngIf="checkError('name', 'required')">Field is required</mat-error>
+      </mat-form-field>
+      <br><br>
 
-        <mat-form-field>
-          <mat-label>Enter Country</mat-label>
-          <input matInput formControlName="country" required placeholder="Ex. New York">
-          <mat-error *ngIf="checkError('name', 'required')">Field is required</mat-error>
-        </mat-form-field>
-        <br><br>
+      <mat-form-field>
+        <mat-label>Enter Country</mat-label>
+        <input matInput formControlName="country" required placeholder="Ex. New York">
+        <mat-error *ngIf="checkError('name', 'required')">Field is required</mat-error>
+      </mat-form-field>
+      <br><br>
 
-        <mat-form-field>
-          <mat-label>Enter Continent</mat-label>
-          <input matInput formControlName="continent" required placeholder="Ex. Europe">
-          <mat-error *ngIf="checkError('name', 'required')">Field is required</mat-error>
-        </mat-form-field>
-        <br><br>
+      <mat-form-field>
+        <mat-label>Enter Continent</mat-label>
+        <input matInput formControlName="continent" required placeholder="Ex. Europe">
+        <mat-error *ngIf="checkError('name', 'required')">Field is required</mat-error>
+      </mat-form-field>
+      <br><br>
 
-        <button pButton type="button"
-                (click)="addCity()"
-                label="Insert New City"
-                [disabled]="cityForm.invalid"
-        >
-        </button>
-
-      </div>
-    </div>
-  </form>
-</div>
-
-<form [formGroup]="packageForm">
-  <div class="split right">
-    <div class="centered">
+      <button pButton type="button"
+              (click)="addCity()"
+              label="Insert New City"
+              [disabled]="cityForm.invalid"
+      >
+      </button>
+    </form>
+  </div>
+  <div class="col-12 md:col-6">
+    <form [formGroup]="packageForm" class="flex flex-column w-full">
       <mat-form-field>
         <mat-label>Enter Package Name</mat-label>
         <input matInput formControlName="name" required placeholder="Insert Name">
@@ -60,7 +54,7 @@
 
       <mat-form-field>
         <mat-label>Enter package duration</mat-label>
-        <input matInput  formControlName="duration" required placeholder="Ex: 4" required>
+        <input matInput formControlName="duration" required placeholder="Ex: 4" required>
         <mat-error *ngIf="checkError('duration', 'required')">Field is required</mat-error>
       </mat-form-field>
 
@@ -72,7 +66,7 @@
 
       <mat-form-field>
         <mat-label>Is Package Featured?</mat-label>
-        <mat-select required formControlName="featured" >
+        <mat-select required formControlName="featured">
           <mat-option value="true">Yes</mat-option>
           <mat-option value="false">No</mat-option>
           <mat-error *ngIf="checkError('featured', 'required')">Field is required</mat-error>
@@ -91,7 +85,7 @@
 
       <mat-form-field>
         <mat-label>Enter Promotional Offer Price</mat-label>
-        <input matInput  formControlName="promotionalOfferPrice" placeholder="Ex: 700.20"
+        <input matInput formControlName="promotionalOfferPrice" placeholder="Ex: 700.20"
                required>
         <mat-error *ngIf="checkError('promotionalOfferPrice', 'required')">Field is required</mat-error>
       </mat-form-field>
@@ -119,6 +113,8 @@
               [disabled]="packageForm.invalid"
       >
       </button>
-    </div>
+    </form>
   </div>
-</form>
+</div>
+
+

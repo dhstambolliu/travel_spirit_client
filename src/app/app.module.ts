@@ -35,6 +35,9 @@ import {InputTextareaModule} from "primeng/inputtextarea";
 import {DropdownModule} from "primeng/dropdown";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {MatRadioModule} from "@angular/material/radio";
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from "primeng/api";
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -75,9 +78,11 @@ import {MatRadioModule} from "@angular/material/radio";
     InputTextareaModule,
     DropdownModule,
     RadioButtonModule,
-    MatRadioModule
+    MatRadioModule,
+    ToastModule,
+    ProgressSpinnerModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

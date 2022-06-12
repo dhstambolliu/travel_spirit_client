@@ -12,7 +12,7 @@ import {Packages} from "../../models/models";
 export class CarouselComponent implements OnInit {
 
   packages: Packages[] | any;
-
+  loader:boolean = false;
   responsiveOptions;
 
   constructor(private packagesService: PackagesService, public domSanitizer: DomSanitizer) {
@@ -41,13 +41,15 @@ export class CarouselComponent implements OnInit {
   }
 
   public getPackages(): void {
+    this.loader = true;
     this.packagesService.getPackages().subscribe(
       (response: Packages[]) => {
         this.packages = response;
-        console.log(this.packages);
+        this.loader = false;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        this.loader = false;
       }
     );
   }

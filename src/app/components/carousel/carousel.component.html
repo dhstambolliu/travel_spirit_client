@@ -2,7 +2,11 @@
             [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
   <ng-template pTemplate="header">
     <h1 [ngStyle]="{'text-align': 'center'}">Paketat më të reja</h1>
+    <div class="col-12 text-center">
+      <p-progressSpinner *ngIf="loader"></p-progressSpinner>
+    </div>
   </ng-template>
+
   <ng-template let-package pTemplate="item">
     <div class="product-item">
       <div class="product-item-content">

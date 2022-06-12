@@ -34,7 +34,7 @@ export class ContactUsComponent implements OnInit {
         }
       }, error => {
         console.error(error);
-        alert(error.message)
+        alert(error.message);
       });
   }
 

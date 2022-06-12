@@ -10,6 +10,7 @@ import {Packages} from "../../models/models";
 })
 export class PromotionListComponent implements OnInit {
   packages: Packages[] | any;
+  loader: boolean = false;
 
   constructor(private packagesService: PackagesService) {
   }
@@ -19,13 +20,15 @@ export class PromotionListComponent implements OnInit {
   }
 
   public getPromotionalOffers(): void {
+    this.loader = true;
     this.packagesService.getPromotionalOffers().subscribe(
       (response: Packages[]) => {
         this.packages = response;
-        console.log(this.packages);
+        this.loader = false;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        this.loader = false;
       }
     );
   }

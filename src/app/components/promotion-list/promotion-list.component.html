@@ -1,8 +1,10 @@
-<div class="grid my-5" style="max-width: 100%">
-  <div class="col-12 text-2xl text-primary center"><h1
-    [style]="{'color': 'black','font-size':'30px', 'margin-bottom':'50px'}"><b>Paketat në promocion</b></h1></div>
-  <div class="col-3" *ngFor="let package of packages">
-    <p-card [style]="{'height':'650px', 'margin-left': '20px', 'text-align':'center'}" [header]=package.name
+<div class="grid fluid container">
+  <div class="text-4xl text-center w-full py-6">Paketat në promocion</div>
+  <div class="col-12 text-center">
+    <p-progressSpinner *ngIf="loader"></p-progressSpinner>
+  </div>
+  <div class="col-4" *ngFor="let package of packages">
+    <p-card class="text-4xl text-center w-full py-6" [header]=package.name
             styleClass="p-card-shadow">
       <ng-template pTemplate="header">
         <img alt="Card" [style]="{'height':'200px'}" [src]="package.imageUrl | safeHtml">

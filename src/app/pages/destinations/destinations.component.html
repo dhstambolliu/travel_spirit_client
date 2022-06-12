@@ -1,8 +1,12 @@
-<div class="grid my-5" style="max-width: 100%">
-  <div class="col-12 text-2xl text-primary center"><h1
-    [style]="{'color': 'black','font-size':'30px', 'margin-bottom':'50px'}"><b>Të gjithë destinacionet</b></h1></div>
-  <div class="col-3" *ngFor="let package of packages">
-    <p-card [style]="{'height':'600px', 'margin-left': '20px', 'text-align' : 'center'}" [header]=package.name
+<div class="grid fluid container">
+  <div class="text-4xl text-center w-full py-6">Të gjithë destinacionet</div>
+
+  <div class="col-12 text-center">
+    <p-progressSpinner *ngIf="loader"></p-progressSpinner>
+  </div>
+
+  <div class="col-4" *ngFor="let package of packages">
+    <p-card class="text-4xl text-center w-full py-6" [header]=package.name
             styleClass="p-card-shadow">
       <p style="font-size: 20px"><b>{{package.duration}}</b> ditë për vetëm <b style="color:green">{{package.price}}
         Lekë</b></p>
@@ -11,7 +15,7 @@
       </ng-template>
       <p [style]="{'height':'200px'}">{{package.description}}</p>
       <ng-template pTemplate="footer">
-        <div class="center">
+        <div class="text-4xl text-center w-full py-6">
           <p-button label="Rezervo" routerLink="/booking/{{package.id}}" icon="pi pi-book"></p-button>
         </div>
       </ng-template>

@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PackagesService} from "../../components/services/packages.service";
 import {ActivatedRoute} from "@angular/router";
-import {Booking, Package} from "../../models/models";
+import {Package} from "../../models/models";
 import {BookingService} from "../../components/services/booking.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-booking',
@@ -18,13 +19,15 @@ export class BookingComponent implements OnInit {
     people: new FormControl('', [Validators.required]),
     reservationDate: new FormControl('', [Validators.required]),
     contact: new FormControl('', [Validators.required]),
-    packageId: new FormControl('', [Validators.required])
+    packageId: new FormControl('', [])
   })
 
   package: Package | any;
+  id?:number
+  loader:boolean = false;
 
   constructor(private _formBuilder: FormBuilder, private packagesService: PackagesService,
-              private route: ActivatedRoute, public bookingService: BookingService) {
+              private route: ActivatedRoute, public bookingService: BookingService, private messageService: MessageService) {
   }
 
   ngOnInit(): void {
@@ -33,8 +36,9 @@ export class BookingComponent implements OnInit {
 
   getPackage(): void {
     // @ts-ignore
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.packagesService.getPackage(id).subscribe(packages => this.package = packages);
+    this.id = +this.route.snapshot.paramMap.get('id');
+
+    this.packagesService.getPackage(this.id).subscribe(packages => this.package = packages);
   }
 
   public checkError = (controlName: string, errorName: string) => {
@@ -43,17 +47,21 @@ export class BookingComponent implements OnInit {
   }
 
   addBooking(): void {
+    this.loader = true;
+    this.bookingForm.controls.packageId.setValue(this.id + "")
     this.bookingService.addBooking(this.bookingForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
-          alert("Package " + this.bookingForm.value.name + " is booked successfully!");
+          this.messageService.add({severity:'success', summary:'Booking was success', detail:"Package " + this.bookingForm.value.name + " is booked successfully. You will be contacted very soon!"});
           this.clearForm();
         } else {
-          alert(response.messages.join(", "))
+          this.messageService.add({severity:'warning', summary:'Booking errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
         }
+        this.loader = false;
       }, error => {
         console.error(error);
-        alert(error.message)
+        this.messageService.add({severity:'warning', summary:'Booking errors', detail: error && error.message ? error.message : "Unknown error"});
+        this.loader = false;
       });
   }
 

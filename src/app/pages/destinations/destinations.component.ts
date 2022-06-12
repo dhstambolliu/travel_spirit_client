@@ -12,6 +12,7 @@ import {Packages} from "../../models/models";
 })
 export class DestinationsComponent implements OnInit {
   packages: any;
+  loader: boolean = false;
 
   constructor(private packagesService: PackagesService, private route: ActivatedRoute, private router: Router) {
   }
@@ -26,13 +27,15 @@ export class DestinationsComponent implements OnInit {
   }
 
   public getDestinations(query?: string): void {
+    this.loader = true;
     this.packagesService.getDestinations(query).subscribe(
       (response: Packages[]) => {
         this.packages = response;
-        console.log(this.packages);
+        this.loader = false;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        this.loader = false;
       }
     );
   }

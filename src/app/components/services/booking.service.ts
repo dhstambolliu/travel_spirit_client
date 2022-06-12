@@ -18,7 +18,7 @@ export class BookingService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  addBooking(booking: Booking): Observable<Booking> {
-    return this.http.post<Booking>(`${this.apiServerUrl}/booking/add`, booking, this.httpOptions);
+  addBooking(booking: Booking): Observable<any> {
+    return this.http.post<any>(`${this.apiServerUrl}/booking/add`, booking, this.httpOptions);
   }
 }
