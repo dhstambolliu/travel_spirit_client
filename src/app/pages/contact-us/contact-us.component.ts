@@ -11,14 +11,13 @@ import {MessageService} from "primeng/api";
 })
 export class ContactUsComponent implements OnInit {
   model: Contact = new Contact();
-  loader: boolean = false;
 
   constructor(private _formBuilder: FormBuilder, public contactService: ContactService, private messageService: MessageService) {
   }
 
   contactForm = new FormGroup({
     fullName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     subject: new FormControl('', [Validators.required])
   })
 
@@ -27,29 +26,33 @@ export class ContactUsComponent implements OnInit {
 
   public checkError = (controlName: string, errorName: string) => {
     // @ts-ignore
-    return this.packageForm.controls[controlName].hasError(errorName);
+    return this.contactForm.controls[controlName].hasError(errorName);
   }
 
   registerForm(): void {
-    this.contactService.addContact(this.model as Contact)
+    this.contactService.addContact(this.contactForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
-          this.loader = true;
           this.messageService.add({severity:'success', summary:'Sending form was success', detail:"Message is sent successfully. You will be contacted very soon!"});
           this.clearContactForm();
         } else {
-          this.messageService.add({severity:'warning', summary:'Contact form errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
-          this.loader = false;
+          this.messageService.add({severity:'warn', summary:'Contact form errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
         }
       }, error => {
         console.error(error);
-        this.messageService.add({severity:'warning', summary:'Contact form errors', detail: error && error.message ? error.message : "Unknown error"});
-        this.loader = false;
+        this.messageService.add({severity:'error', summary:'Contact form errors', detail: error && error.message ? error.message : "Unknown error"});
       });
   }
 
   public clearContactForm() {
-    this.model = new Contact();
+    let tmpValue = {
+      fullName: null,
+      email: null,
+      subject: null
+    };
+    this.contactForm.setValue(tmpValue as any);
+    this.contactForm.clearAsyncValidators();
+    this.contactForm.reset();
   }
 
 }

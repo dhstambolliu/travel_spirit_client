@@ -1,33 +1,42 @@
-<div class="container grid">
-  <div class="col-12 md:col-6">
+<div class="grid w-10 my-8 ml-8 align-items-center">
+  <div class="col-12 md:col-4">
+    <form [formGroup]="contactForm" class="flex flex-column w-full">
+      <mat-form-field class="py-1">
+        <mat-label>Enter Full Name</mat-label>
+        <input matInput formControlName="fullName" required placeholder="Ex. Nougat">
+        <mat-error *ngIf="checkError('fullName', 'required')">Field is required</mat-error>
+      </mat-form-field>
 
-      <label for="fullName" class="block text-900 font-medium mb-2">Name</label>
-      <input id="fullName" type="text" pInputText required [(ngModel)]="model.fullName" class="w-full mb-3">
+      <mat-form-field class="py-1">
+        <mat-label>Enter your email</mat-label>
+        <input matInput formControlName="email" placeholder="pat@example.com" required>
+        <mat-error *ngIf="checkError('email', 'required')">Field is required</mat-error>
+      </mat-form-field>
 
-      <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-      <input id="email1" type="email" pInputText class="w-full mb-3" required [(ngModel)]="model.email"/>
-<div>
-      <label for="Message" class="block text-900 font-medium mb-2">Message</label>
-      <textarea id="Message" pInputTextarea class="w-full mb-3" required [(ngModel)]="model.subject"></textarea>
+      <mat-form-field class="py-1">
+        <mat-label>Enter Message</mat-label>
+        <textarea matInput formControlName="subject" required
+                  placeholder="Send a message" rows="6"></textarea>
+        <mat-error *ngIf="checkError('subject', 'required')">Field is required</mat-error>
+      </mat-form-field>
+
+      <button pButton type="button"
+              (click)="registerForm()"
+              label="Send Message"
+
+              [disabled]="contactForm.invalid"
+      >
+      </button>
+    </form>
   </div>
-      <button pButton type="button" (click)="registerForm()"
-              label="Submit"></button>
-    </div>
 
-<div class="col-12 md:col-6">
-  <div class="mapouter">
+  <div class="col-12 md:col-8">
     <div class="gmap_canvas">
-      <iframe width="100%" height="400" id="gmap_canvas"
+      <iframe width="100%" height="500" id="gmap_canvas"
               src="https://maps.google.com/maps?q=papa%20gjon%20pali&t=k&z=13&ie=UTF8&iwloc=&output=embed"
               [frameBorder]="0"
               [scrolling]="0" [marginHeight]="0" [marginWidth]="0"></iframe>
-      <style>
-        .gmap_canvas {
-          overflow: hidden;
-          background: none !important;
-        }
-      </style>
     </div>
   </div>
 </div>
-</div>
+

@@ -30,8 +30,12 @@ input[type=submit]:hover {
 }
 
 .container {
-  background-color: #F2F2F2;
   padding: 20px;
   margin: 6.8%;
   height: 58%;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
 }

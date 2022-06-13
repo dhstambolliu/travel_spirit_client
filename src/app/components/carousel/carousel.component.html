@@ -17,11 +17,17 @@
         <div>
           <h1 class="mb-1">{{package.duration}} ditë në {{package.name}}</h1>
           <h3 class="mt-0 mb-3" style="font-size: 20px; color: green">{{package.price}} Lekë</h3>
-          <p [style]="{'height':'200px'}"
-             [class]="'product-badge status-'+package.description.toLowerCase()">{{package.description}}</p>
+          <p-scrollTop></p-scrollTop>
+          <p-scrollPanel [style]="{width: '95%', height: '100px'}">
+            <p class="pl-4" [style]="{'text-align':'left'}"
+               [class]="'product-badge status-'+package.description.toLowerCase()">{{package.description}}
+            </p>
+            <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100"
+                         icon="pi pi-arrow-up"></p-scrollTop>
+          </p-scrollPanel>
           <div class="car-buttons mt-5">
             <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-book"
-                      routerLink="/booking/{{package.id}}" label="Rezervo"></p-button>
+                      routerLink="/booking/{{package.id}}" label="Book Now"></p-button>
           </div>
         </div>
       </div>

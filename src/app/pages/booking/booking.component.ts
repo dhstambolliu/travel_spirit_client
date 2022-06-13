@@ -52,7 +52,7 @@ export class BookingComponent implements OnInit {
     this.bookingService.addBooking(this.bookingForm.value as any)
       .subscribe((response: any) => {
         if (response.success) {
-          this.messageService.add({severity:'success', summary:'Booking was success', detail:"Package " + this.bookingForm.value.name + " is booked successfully. You will be contacted very soon!"});
+          this.messageService.add({severity:'success', summary:'Booking was success', detail:"Package is booked successfully. You will be contacted very soon!"});
           this.clearForm();
         } else {
           this.messageService.add({severity:'warn', summary:'Booking errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});

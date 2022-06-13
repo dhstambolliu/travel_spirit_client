@@ -56,6 +56,7 @@ export class AddNewPackagesComponent implements OnInit {
           this.loader = true;
           this.messageService.add({severity:'success', summary:'Action was success', detail:"City is created successfully."});
           this.clearCityForm();
+          this.getCities();
         } else {
           this.messageService.add({severity:'warn', summary:'Adding City errors', detail: response.messages ? response.messages.join(", ") : "Unknown error"});
           this.loader = false;

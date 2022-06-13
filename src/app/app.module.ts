@@ -38,6 +38,8 @@ import {MatRadioModule} from "@angular/material/radio";
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from "primeng/api";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {ScrollTopModule} from 'primeng/scrolltop';
+import {ScrollPanelModule} from "primeng/scrollpanel";
 
 @NgModule({
   declarations: [
@@ -80,7 +82,9 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     RadioButtonModule,
     MatRadioModule,
     ToastModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ScrollTopModule,
+    ScrollPanelModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

@@ -13,11 +13,18 @@
         style="color: green">{{package.promotionalOfferPrice}}
         Lekë</span></b></h2>
       <p style="text-decoration: line-through; color: red; text-align: center">{{package.price}} Lekë</p>
-      <p [style]="{'height':'200px'}">{{package.description}}</p>
+      <p-scrollTop></p-scrollTop>
+      <p-scrollPanel [style]="{width: '100%', height: '144px'}">
+        <p style="text-align: left">
+          {{package.description}}
+        </p>
+        <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100"
+                     icon="pi pi-arrow-up"></p-scrollTop>
+      </p-scrollPanel>
 
       <ng-template pTemplate="footer">
         <div class="center">
-          <p-button label="Rezervo" icon="pi pi-book" routerLink="/booking/{{package.id}}"></p-button>
+          <p-button label="Book Now" icon="pi pi-book" routerLink="/booking/{{package.id}}"></p-button>
         </div>
       </ng-template>
 
