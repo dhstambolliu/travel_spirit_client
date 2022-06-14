@@ -48,3 +48,15 @@ export interface City {
   country: string;
   continent: string;
 }
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+export interface NewsLetter {
+  active?: boolean;
+  email?: string;
+}

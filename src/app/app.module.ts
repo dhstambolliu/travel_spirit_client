@@ -40,6 +40,13 @@ import {MessageService} from "primeng/api";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ScrollTopModule} from 'primeng/scrolltop';
 import {ScrollPanelModule} from "primeng/scrollpanel";
+import { NewsletterComponent } from './components/newsletter/newsletter.component';
+import {MatTableModule} from "@angular/material/table";
+import { UserComponent } from './components/user/user.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -55,7 +62,9 @@ import {ScrollPanelModule} from "primeng/scrollpanel";
     AboutUsComponent,
     BookingComponent,
     ContactUsComponent,
-    AddNewPackagesComponent
+    AddNewPackagesComponent,
+    NewsletterComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +93,12 @@ import {ScrollPanelModule} from "primeng/scrollpanel";
     ToastModule,
     ProgressSpinnerModule,
     ScrollTopModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    MatTableModule,
+    MatDialogModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

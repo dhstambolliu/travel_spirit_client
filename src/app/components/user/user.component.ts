@@ -1,20 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {PeriodicElement} from 'src/app/models/models';
+import {PeriodicElement} from "../../models/models";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class UserComponent {
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
