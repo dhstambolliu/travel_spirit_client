@@ -52,7 +52,6 @@ export class NewsletterComponent implements OnInit {
           detail: error && error.message ? error.message : "Unknown error"
         });
       });
-
   }
 
   ngOnInit(): void {
